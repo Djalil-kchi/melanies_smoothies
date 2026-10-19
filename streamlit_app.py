@@ -2,12 +2,9 @@
 import streamlit as st
 import os
 
-
-
 # Importation de la fonction 'col' de Snowpark pour manipuler les colonnes
 
 from snowflake.snowpark.functions import col
-
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
@@ -15,7 +12,6 @@ st.write(
   """Choose the fruits you want in your custom Smoothie!
     """
 )
-
 
 # Ajout d'un champ texte pour le nom du client
 name_on_order = st.text_input('Name on Smoothie:')
@@ -29,7 +25,6 @@ st.write('The name on your Smoothie will be:', name_on_order)
 #)
 
 # st.write('Your favorite fruit is:', option)
-
 
 
 # ==========================================
@@ -112,23 +107,6 @@ if ingredients_list:
         st.success('Your Smoothie is ordered, ' + name_on_order + '!', icon="✅")
     
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
