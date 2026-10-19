@@ -4,8 +4,9 @@ import os
 
 # Importation de la fonction 'col' de Snowpark pour manipuler les colonnes
 
-
 from snowflake.snowpark.functions import col
+
+import requests
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
@@ -63,18 +64,19 @@ ingredients_list = st.multiselect(
 
 # Affichage brut de la liste (pour comprendre le type de donnée LIST)
 # On utilise un bloc IF pour n'afficher la liste QUE si elle n'est pas vide
-if ingredients_list:
-    # st.write(ingredients_list)
-    # st.text(ingredients_list)
 
-    # On crée une variable texte vide pour stocker les fruits
+if ingredients_list:
+
     ingredients_string = ''
-    
+
     # On crée une boucle FOR pour parcourir la liste des ingrédients choisis
+  
     for fruit_chosen in ingredients_list:
-        # L'opérateur += ajoute le nom du fruit à la suRETAILPULSE_DB.RAW.ORDERS_STREAMite de la chaîne de caractères
-        ingredients_string += fruit_chosen 
-    
+        ingredients_string += fruit_chosen
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
+  
     # On affiche le résultat final (la chaîne de caractères complète)
     st.write(ingredients_string)
 
@@ -107,11 +109,7 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered, ' + name_on_order + '!', icon="✅")
 
-import requests
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-# st.text(smoothiefroot_response.json())
 
-sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
     
 
