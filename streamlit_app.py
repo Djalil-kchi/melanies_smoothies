@@ -1,7 +1,7 @@
 # Import python packages
 import streamlit as st
 import os
-from snowflake.snowpark.context import get_active_session
+
 
 
 # Importation de la fonction 'col' de Snowpark pour manipuler les colonnes
@@ -36,10 +36,10 @@ st.write('The name on your Smoothie will be:', name_on_order)
 # 4. CONNEXION A LA BASE ET AFFICHAGE DES DONNEES
 # ==========================================
 
-# Récupération de la session active (déjà importée en haut du fichier)
+# Récupération de la session active 
 
-session = get_active_session()
-
+cnx = st.connection("snowflake")
+session = cnx.session()
 
 # ==========================================
 # 6. UTILISATION DE LA FONCTION COL() POUR FILTRER
