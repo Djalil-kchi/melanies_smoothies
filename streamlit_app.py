@@ -4,6 +4,8 @@ import os
 
 # Importation de la fonction 'col' de Snowpark pour manipuler les colonnes
 
+
+
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -105,7 +107,13 @@ if ingredients_list:
     if time_to_insert:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered, ' + name_on_order + '!', icon="✅")
-    
+
+
+import requests  
+smoothiefroot_response = requests.get("[https://my.smoothiefroot.com/api/fruit/watermelon](https://my.smoothiefroot.com/api/fruit/watermelon)")  
+st.text(smoothiefroot_response)
+
+
     
 
 
