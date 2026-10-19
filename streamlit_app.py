@@ -4,7 +4,7 @@ import os
 
 # Importation de la fonction 'col' de Snowpark pour manipuler les colonnes
 
-
+import requests
 
 from snowflake.snowpark.functions import col
 
